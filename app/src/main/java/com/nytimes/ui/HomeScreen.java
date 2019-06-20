@@ -31,7 +31,7 @@ public class HomeScreen extends AppCompatActivity {
 
     private ProgressDialog mProgressDialog;
     Gson gson;
-    private Toolbar toolbar;
+    private Toolbar mToolbar;
     private RecyclerView mRecyclerView;
     private ArticleAdapter articleAdapter;
 
@@ -54,11 +54,11 @@ public class HomeScreen extends AppCompatActivity {
     }
 
     private void init() {
-        toolbar = findViewById(R.id.toolbar);
+        mToolbar = findViewById(R.id.toolbar);
 
         mRecyclerView = findViewById(R.id.recycler_view);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_menu);
+        setSupportActionBar(mToolbar);
+        mToolbar.setNavigationIcon(R.drawable.ic_menu);
         getSupportActionBar().setTitle(getResources().getString(R.string.title));
     }
 

@@ -20,6 +20,9 @@ public class Constants {
     public static final String BASE_URL = "http://api.nytimes.com/svc/mostpopular/v2/mostviewed/";
     public static final String API_KEY = "A3XAdR0I3HDL9vzGP96vvUnTgp740xA5";
     public static final String RESULTS = "results";
+    public static final String CAPTION = "caption";
+    public static final String COPYRIGHT = "copyright";
+    public static final String IMAGE = "image";
 
 
     public static OkHttpClient getinfo() {

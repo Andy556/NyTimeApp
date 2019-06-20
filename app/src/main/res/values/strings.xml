@@ -2,6 +2,7 @@
     <string name="app_name">NyTimes</string>
 
     <string name="status">status</string>
+    <string name="detail_page">Detail Page</string>
     <string name="failed">false</string>
     <string name="ok">OK</string>
     <string name="action_settings">Settings</string>

@@ -6,7 +6,7 @@
     android:padding="@dimen/row_padding_vertical">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/tvIcon"
+        android:id="@+id/ivIcon"
         android:layout_width="@dimen/image_size"
         android:layout_height="@dimen/image_size"
         android:layout_alignParentStart="true"
@@ -19,8 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/margin_border"
-        android:layout_toEndOf="@+id/tvIcon"
-        android:layout_toRightOf="@+id/tvIcon"
+        android:layout_toEndOf="@+id/ivIcon"
+        android:layout_toRightOf="@+id/ivIcon"
         android:padding="@dimen/padding">
 
 

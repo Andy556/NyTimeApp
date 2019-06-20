@@ -2,9 +2,9 @@
 package com.nytimes.model;
 
 import java.util.List;
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.nytimes.model.Medium;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
@@ -48,16 +48,20 @@ public class ArticleList {
     private String assetId;
     @SerializedName("views")
     @Expose
-    private Integer views;
-
+    private String views;
+    @SerializedName("media")
+    @Expose
+    private List<Medium> media = null;
 
     /**
      * No args constructor for use in serialization
+     *
      */
     public ArticleList() {
     }
 
     /**
+     *
      * @param adxKeywords
      * @param type
      * @param url
@@ -71,8 +75,9 @@ public class ArticleList {
      * @param column
      * @param _abstract
      * @param publishedDate
+     * @param media
      */
-    public ArticleList(String url, String adxKeywords, Object column, String section, String byline, String type, String title, String _abstract, String publishedDate, String source, String id, String assetId, Integer views) {
+    public ArticleList(String url, String adxKeywords, Object column, String section, String byline, String type, String title, String _abstract, String publishedDate, String source, String id, String assetId, String views, List<Medium> media) {
         super();
         this.url = url;
         this.adxKeywords = adxKeywords;
@@ -87,7 +92,7 @@ public class ArticleList {
         this.id = id;
         this.assetId = assetId;
         this.views = views;
-
+        this.media = media;
     }
 
     public String getUrl() {
@@ -186,18 +191,25 @@ public class ArticleList {
         this.assetId = assetId;
     }
 
-    public Integer getViews() {
+    public String getViews() {
         return views;
     }
 
-    public void setViews(Integer views) {
+    public void setViews(String views) {
         this.views = views;
     }
 
+    public List<Medium> getMedia() {
+        return media;
+    }
+
+    public void setMedia(List<Medium> media) {
+        this.media = media;
+    }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("url", url).append("adxKeywords", adxKeywords).append("column", column).append("section", section).append("byline", byline).append("type", type).append("title", title).append("_abstract", _abstract).append("publishedDate", publishedDate).append("source", source).append("id", id).append("assetId", assetId).append("views", views).toString();
+        return new ToStringBuilder(this).append("url", url).append("adxKeywords", adxKeywords).append("column", column).append("section", section).append("byline", byline).append("type", type).append("title", title).append("_abstract", _abstract).append("publishedDate", publishedDate).append("source", source).append("id", id).append("assetId", assetId).append("views", views).append("media", media).toString();
     }
 
 }

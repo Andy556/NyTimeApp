@@ -15,8 +15,13 @@ import android.widget.Toast;
 import com.nytimes.R;
 import com.nytimes.custom_font.MyTextView;
 import com.nytimes.model.ArticleList;
+import com.nytimes.ui.DetailsPage;
+import com.nytimes.utils.Constants;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHolder> {
 
@@ -28,6 +33,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
         public MyTextView tvAuthor, tvDate;
         TextView tvHeader;
         RelativeLayout layout;
+        CircleImageView ivIcon;
 
         public MyViewHolder(View view) {
             super(view);
@@ -35,6 +41,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
             tvAuthor = view.findViewById(R.id.tvAuthor);
             tvDate = view.findViewById(R.id.tvDate);
             layout = view.findViewById(R.id.layout);
+            ivIcon = view.findViewById(R.id.ivIcon);
 
         }
     }
@@ -61,13 +68,24 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
         holder.tvHeader.setText(mArticleList.getTitle());
         holder.tvAuthor.setText(mArticleList.getByline());
         holder.tvDate.setText(mArticleList.getPublishedDate());
+        Picasso.get()
+                .load(mArticleList.getMedia().get(0).getMediaMetadata().get(3).getUrl())
+                .into(holder.ivIcon);
 
 
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mArticleList = articleLists.get(position);
+                String mCaption = mArticleList.getMedia().get(0).getCaption();
+                String mCopyright = mArticleList.getMedia().get(0).getCopyright();
+                String mImage = mArticleList.getMedia().get(0).getMediaMetadata().get(3).getUrl();
 
-                Toast.makeText(mContext,"pos " + position,Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, DetailsPage.class);
+                intent.putExtra(Constants.CAPTION, mCaption);
+                intent.putExtra(Constants.COPYRIGHT, mCopyright);
+                intent.putExtra(Constants.IMAGE, mImage);
+                mContext.startActivity(intent);
             }
         });
 
